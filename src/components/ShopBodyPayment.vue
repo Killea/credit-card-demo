@@ -76,18 +76,18 @@
               <el-row style="margin-top:30px">
                 <el-col :span="9">
                   <el-form-item label="Expiry month" prop="expiryMonth">
-                    <el-input style="width:90%" v-model="ruleForm.expiryMonth" autocomplete="off"></el-input>
+                    <el-input id= 'month' style="width:90%" v-model="ruleForm.expiryMonth" autocomplete="off"></el-input>
                   </el-form-item>
                 </el-col>
 
                 <el-col :span="9">
                   <el-form-item label="Expiry year" prop="expiryYear">
-                    <el-input style="width:90%" v-model="ruleForm.expiryYear" autocomplete="off"></el-input>
+                    <el-input id = 'year' style="width:90%" v-model="ruleForm.expiryYear" autocomplete="off"></el-input>
                   </el-form-item>
                 </el-col>
                 <el-col :span="6">
                   <el-form-item label="CVC/CVV" prop="cvc">
-                    <el-input v-model="ruleForm.cvc" autocomplete="off"></el-input>
+                    <el-input id ='cvc' v-model="ruleForm.cvc" autocomplete="off"></el-input>
                   </el-form-item>
                 </el-col>
               </el-row>

@@ -16,6 +16,7 @@ const amexGood = '378868637988407'
 const randomCardWrong = '124567'
 
 const wrongMon = ['-1', '*', '0', '22', '☹️']
+const correctMon = ['1', '2', '3', '4', '5', '07', '08', '09', '10']
 
 describe('💡Click Checkout Button', () => {
   it('☹️Input Nothing', () => {
@@ -104,13 +105,35 @@ describe('💡Click Checkout Button', () => {
 })
 
 describe('💡Click Checkout Button', () => {
-  it('😃Input a wrong month', () => {
+  it('☹️Input a wrong month', () => {
     const wrapper = mount(ShopBodyPayment, {
       localVue
     })
-    wrapper.find('#card-number').setValue(amexGood)
-    let button = wrapper.find('.submitButton')
-    button.trigger('click')
-    expect(wrapper.vm.errText.errMon).toBe('')
+
+    wrongMon.forEach(element => {
+      wrapper.find('#month').setValue(element)
+      let button = wrapper.find('.submitButton')
+      button.trigger('click')
+      expect(wrapper.vm.errText.errMon).toBe(
+        'Please input correct expiry month'
+      )
+    })
+  })
+})
+
+describe('💡Click Checkout Button', () => {
+  it('😃Input a correct month', () => {
+    const wrapper = mount(ShopBodyPayment, {
+      localVue
+    })
+
+    correctMon.forEach(element => {
+      wrapper.find('#month').setValue(element)
+      let button = wrapper.find('.submitButton')
+      button.trigger('click')
+      expect(wrapper.vm.errText.errMon).toBe(
+        ''
+      )
+    })
   })
 })
