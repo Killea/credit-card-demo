@@ -3,10 +3,28 @@
 
 ![Demo picture](https://i.imgur.com/Sr8jSFc.png )
 
-You can use npm or yarn to excute the project.
+## Components:
+```
+There are 3 components in this demo project. The main comonent is ShopBodyPayment.vue.
+The ShopBody.vue has a tab, ShopBodyPayment.vue is one of its tab page.
+we can develop other components and put them into the ShopBody.vue's body.
+```
+## Form Validation
+```
+There are a few customed validation function in ShopBodyPayment.vue. 
+I also used vue's 'watched' to make sure some unwanted charachters/letters cannot be filled into the form.
+Error infomation is kind of sufficient and clear.
+```
+## Tests 
+```
+Used jest and @vue/test-utils to simulate the click and then check the message. Mainly test the ShopBodyPayment.vue.
+```
+## Demo
+```
+You can clone it and use npm or yarn to excute the project.
 
 Demo: https://cdemo.abcweb.ca
-
+```
 ## Project setup
 ```
 yarn install  or npm install

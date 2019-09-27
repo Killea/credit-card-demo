@@ -7,8 +7,9 @@ import ShopBodyPayment from '@/components/ShopBodyPayment.vue'
 const localVue = createLocalVue()
 localVue.use(ElementUI)
 
-const cardHolderNamePureNumber = 2222222221111
+const cardHolderNamePureNumber = '22222222111'
 
+const oneGoodName = 'Tom Good'
 const masterGood = '5490499495563199'
 const visaGood = '4035300539804083'
 const amexGood = '378868637988407'
@@ -24,21 +25,21 @@ const correctYear = ['2025', '2030']
 const corrctCardInfo = [
   {
     cvc: '123',
-    card: '5490499495563199',
+    number: '5490499495563199',
     type: 'master',
     mon: '12',
     year: '2030'
   },
   {
     cvc: '123',
-    card: '4035300539804083',
+    number: '4035300539804083',
     type: 'visa',
     mon: '12',
     year: '2030'
   },
   {
     cvc: '5678',
-    card: '378868637988407',
+    number: '378868637988407',
     type: 'amex',
     mon: '12',
     year: '2030'
@@ -48,27 +49,26 @@ const corrctCardInfo = [
 const wrongCardInfo = [
   {
     cvc: '1234',
-    card: '5490499495563199',
+    number: '5490499495563199',
     type: 'master',
     mon: '12',
     year: '2030'
   },
   {
     cvc: '1=3',
-    card: '4035300539804083',
+    number: '4035300539804083',
     type: 'visa',
     mon: '12',
     year: '2030'
   },
   {
     cvc: '***',
-    card: '378868637988407',
+    number: '378868637988407',
     type: 'amex',
     mon: '12',
     year: '2030'
   }
 ]
-
 
 describe('💡Click Checkout Button', () => {
   it('☹️Input Nothing', () => {
@@ -89,6 +89,30 @@ describe('💡Click Checkout Button', () => {
     expect(wrapper.vm.errText.errMon).toBe(`Please input correct expiry month`)
     expect(wrapper.vm.errText.errYear).toBe(`Please input correct expiry year`)
     expect(wrapper.vm.errText.errCVC).toBe(`Please input correct cvc`)
+  })
+})
+
+describe('💡Click Checkout Button', () => {
+  it('😃Input everything correctly!', () => {
+    const wrapper = mount(ShopBodyPayment, {
+      localVue
+    })
+
+    wrapper.find('#card-holder-name').setValue(oneGoodName)
+    wrapper.find('#card-number').setValue(corrctCardInfo[0].number)
+    wrapper.find('#month').setValue(corrctCardInfo[0].mon)
+    wrapper.find('#year').setValue(corrctCardInfo[0].year)
+    wrapper.find('#cvc').setValue(corrctCardInfo[0].cvc)
+
+
+    let button = wrapper.find('.submitButton')
+    button.trigger('click')
+
+    expect(wrapper.vm.errText.errCardHolderName).toBe('')
+    expect(wrapper.vm.errText.errCardNumber).toBe('')
+    expect(wrapper.vm.errText.errMon).toBe('')
+    expect(wrapper.vm.errText.errYear).toBe('')
+    expect(wrapper.vm.errText.errCVC).toBe('')
   })
 })
 
@@ -230,13 +254,13 @@ describe('💡Click Checkout Button', () => {
 })
 
 describe('💡Click Checkout Button', () => {
-  it('😃Input a correct cvv with correct card', () => {
+  it('😃Input a correct cvv and correct card', () => {
     const wrapper = mount(ShopBodyPayment, {
       localVue
     })
 
     corrctCardInfo.forEach(element => {
-      wrapper.find('#card-number').setValue(element.card)
+      wrapper.find('#card-number').setValue(element.number)
       wrapper.find('#cvc').setValue(element.cvc)
       let button = wrapper.find('.submitButton')
       button.trigger('click')
@@ -246,13 +270,13 @@ describe('💡Click Checkout Button', () => {
 })
 
 describe('💡Click Checkout Button', () => {
-  it('☹️😃Input a wrong cvv with correct card', () => {
+  it('☹️😃Input a wrong cvv but correct card', () => {
     const wrapper = mount(ShopBodyPayment, {
       localVue
     })
 
     wrongCardInfo.forEach(element => {
-      wrapper.find('#card-number').setValue(element.card)
+      wrapper.find('#card-number').setValue(element.number)
       wrapper.find('#cvc').setValue(element.cvc)
       let button = wrapper.find('.submitButton')
       button.trigger('click')

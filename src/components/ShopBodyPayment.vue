@@ -138,7 +138,7 @@ export default {
       callback();
     };
 
-    var validateCreditCard = (rule, value, callback) => {
+    var validateCreditCardNumber = (rule, value, callback) => {
       this.errText.errCardNumber = "";
       let cardNumber = value;
       if (!cardNumber) {
@@ -290,7 +290,7 @@ export default {
         cardNumber: [
           {
             required: true,
-            validator: validateCreditCard,
+            validator: validateCreditCardNumber,
             trigger: "blur"
           }
         ],
