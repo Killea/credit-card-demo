@@ -1,5 +1,10 @@
 # credit-card-form
 
+## Demo
+
+You can clone it and use npm or yarn to excute the project.
+
+Demo: https://cdemo.abcweb.ca May not be the newest version.
 
 ![Demo picture](  https://i.imgur.com/Z2WJJDY.png )
 
@@ -27,12 +32,7 @@ Mainly test the ShopBodyPayment.vue.
 ```
 Used CSS.
 ```
-## Demo
-```
-You can clone it and use npm or yarn to excute the project.
 
-Demo: https://cdemo.abcweb.ca May not be the newest version.
-```
 ## Project setup
 ```
 yarn install  or npm install
