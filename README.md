@@ -1,5 +1,8 @@
 # credit-card-form
 
+
+![Demo picture](https://i.imgur.com/Sr8jSFc.png )
+
 You can use npm or yarn to excute the project.
 
 Demo: https://cdemo.abcweb.ca
