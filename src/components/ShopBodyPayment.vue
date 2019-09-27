@@ -87,7 +87,7 @@
                 </el-col>
                 <el-col :span="6">
                   <el-form-item label="CVC/CVV" prop="cvc">
-                    <el-input id ='cvc' v-model="ruleForm.cvc" autocomplete="off"></el-input>
+                    <el-input id ='cvc' type='password' v-model="ruleForm.cvc" autocomplete="off"></el-input>
                   </el-form-item>
                 </el-col>
               </el-row>
