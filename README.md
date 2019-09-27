@@ -1,7 +1,10 @@
 # credit-card-form
 
 
-![Demo picture](https://i.imgur.com/Sr8jSFc.png )
+![Demo picture](  https://i.imgur.com/Z2WJJDY.png )
+
+
+
 
 ## Components:
 ```
