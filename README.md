@@ -22,6 +22,10 @@ Error infomation is kind of sufficient and clear.
 ```
 Used jest and @vue/test-utils to simulate the click and then check the message. Mainly test the ShopBodyPayment.vue.
 ```
+## CSS
+```
+Used CSS.
+```
 ## Demo
 ```
 You can clone it and use npm or yarn to excute the project.
