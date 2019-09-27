@@ -20,7 +20,8 @@ Error infomation is kind of sufficient and clear.
 ```
 ## Tests 
 ```
-Used jest and @vue/test-utils to simulate the click and then check the message. Mainly test the ShopBodyPayment.vue.
+Used jest and @vue/test-utils to simulate the click and then check the message.
+Mainly test the ShopBodyPayment.vue.
 ```
 ## CSS
 ```
@@ -30,7 +31,7 @@ Used CSS.
 ```
 You can clone it and use npm or yarn to excute the project.
 
-Demo: https://cdemo.abcweb.ca
+Demo: https://cdemo.abcweb.ca May not be the newest version.
 ```
 ## Project setup
 ```
