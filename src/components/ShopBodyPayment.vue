@@ -149,22 +149,21 @@ export default {
       // delete space (\u0020) in the card number
       cardNumber = cardNumber.replace(/\u0020/g, "");
 
-      console.log(cardNumber);
-
+    
       if (visa.test(cardNumber)) {
-        console.log("Visa!");
+       // console.log("Visa!");
         this.cardType = "Visa";
         return callback();
       }
 
       if (mastercard.test(cardNumber)) {
-        console.log("mastercard!");
+       // console.log("mastercard!");
         this.cardType = "Mastercard";
         return callback();
       }
 
       if (americanExpress.test(cardNumber)) {
-        console.log("americanExpress!");
+       // console.log("americanExpress!");
         this.cardType = "American Express";
         return callback();
       }

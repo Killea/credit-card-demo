@@ -18,6 +18,58 @@ const randomCardWrong = '124567'
 const wrongMon = ['-1', '*', '0', '22', '☹️']
 const correctMon = ['1', '2', '3', '4', '5', '07', '08', '09', '10']
 
+const wrongYear = ['1999', 'A27', '2018']
+const correctYear = ['2025', '2030']
+
+const corrctCardInfo = [
+  {
+    cvc: '123',
+    card: '5490499495563199',
+    type: 'master',
+    mon: '12',
+    year: '2030'
+  },
+  {
+    cvc: '123',
+    card: '4035300539804083',
+    type: 'visa',
+    mon: '12',
+    year: '2030'
+  },
+  {
+    cvc: '5678',
+    card: '378868637988407',
+    type: 'amex',
+    mon: '12',
+    year: '2030'
+  }
+]
+
+const wrongCardInfo = [
+  {
+    cvc: '1234',
+    card: '5490499495563199',
+    type: 'master',
+    mon: '12',
+    year: '2030'
+  },
+  {
+    cvc: '1=3',
+    card: '4035300539804083',
+    type: 'visa',
+    mon: '12',
+    year: '2030'
+  },
+  {
+    cvc: '***',
+    card: '378868637988407',
+    type: 'amex',
+    mon: '12',
+    year: '2030'
+  }
+]
+
+
 describe('💡Click Checkout Button', () => {
   it('☹️Input Nothing', () => {
     const wrapper = mount(ShopBodyPayment, {
@@ -25,11 +77,18 @@ describe('💡Click Checkout Button', () => {
     })
     let button = wrapper.find('.submitButton')
     button.trigger('click')
-    // let message = wrapper.find('.el-message-box__message')
-    // console.log(wrapper.vm.errText.errCardHolderName)
+
     expect(wrapper.vm.errText.errCardHolderName).toBe(
       `Please input the card holder's name`
     )
+
+    expect(wrapper.vm.errText.errCardNumber).toBe(
+      `Please input the card number`
+    )
+
+    expect(wrapper.vm.errText.errMon).toBe(`Please input correct expiry month`)
+    expect(wrapper.vm.errText.errYear).toBe(`Please input correct expiry year`)
+    expect(wrapper.vm.errText.errCVC).toBe(`Please input correct cvc`)
   })
 })
 
@@ -43,7 +102,7 @@ describe('💡Click Checkout Button', () => {
 
     let button = wrapper.find('.submitButton')
     button.trigger('click')
-    console.log(wrapper.vm.errText.errCardHolderName)
+
     expect(wrapper.vm.errText.errCardHolderName).toBe(
       `Please check the card holder's name, cannot be a number`
     )
@@ -131,9 +190,73 @@ describe('💡Click Checkout Button', () => {
       wrapper.find('#month').setValue(element)
       let button = wrapper.find('.submitButton')
       button.trigger('click')
-      expect(wrapper.vm.errText.errMon).toBe(
-        ''
-      )
+      expect(wrapper.vm.errText.errMon).toBe('')
+    })
+  })
+})
+
+describe('💡Click Checkout Button', () => {
+  it('☹️Input a wrong year', () => {
+    const wrapper = mount(ShopBodyPayment, {
+      localVue
+    })
+
+    wrongYear.forEach(element => {
+      wrapper.find('#year').setValue(element)
+      let button = wrapper.find('.submitButton')
+      button.trigger('click')
+
+      expect(
+        wrapper.vm.errText.errYear === 'Your card expiried' ||
+          wrapper.vm.errText.errYear === 'Please input correct expiry year'
+      ).toBeTruthy()
+    })
+  })
+})
+
+describe('💡Click Checkout Button', () => {
+  it('😃Input a correct year', () => {
+    const wrapper = mount(ShopBodyPayment, {
+      localVue
+    })
+
+    correctYear.forEach(element => {
+      wrapper.find('#year').setValue(element)
+      let button = wrapper.find('.submitButton')
+      button.trigger('click')
+      expect(wrapper.vm.errText.errYear === '').toBeTruthy()
+    })
+  })
+})
+
+describe('💡Click Checkout Button', () => {
+  it('😃Input a correct cvv with correct card', () => {
+    const wrapper = mount(ShopBodyPayment, {
+      localVue
+    })
+
+    corrctCardInfo.forEach(element => {
+      wrapper.find('#card-number').setValue(element.card)
+      wrapper.find('#cvc').setValue(element.cvc)
+      let button = wrapper.find('.submitButton')
+      button.trigger('click')
+      expect(wrapper.vm.errText.errCVC).toBe('')
+    })
+  })
+})
+
+describe('💡Click Checkout Button', () => {
+  it('☹️😃Input a wrong cvv with correct card', () => {
+    const wrapper = mount(ShopBodyPayment, {
+      localVue
+    })
+
+    wrongCardInfo.forEach(element => {
+      wrapper.find('#card-number').setValue(element.card)
+      wrapper.find('#cvc').setValue(element.cvc)
+      let button = wrapper.find('.submitButton')
+      button.trigger('click')
+      expect(wrapper.vm.errText.errCVC).toBe('Please input correct cvc')
     })
   })
 })
