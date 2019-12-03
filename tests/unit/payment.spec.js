@@ -22,7 +22,7 @@ const correctMon = ['1', '2', '3', '4', '5', '07', '08', '09', '10']
 const wrongYear = ['1999', 'A27', '2018']
 const correctYear = ['2025', '2030']
 
-const corrctCardInfo = [
+const correctCardInfo = [
   {
     cvc: '123',
     number: '5490499495563199',
@@ -99,10 +99,10 @@ describe('💡Click Checkout Button', () => {
     })
 
     wrapper.find('#card-holder-name').setValue(oneGoodName)
-    wrapper.find('#card-number').setValue(corrctCardInfo[0].number)
-    wrapper.find('#month').setValue(corrctCardInfo[0].mon)
-    wrapper.find('#year').setValue(corrctCardInfo[0].year)
-    wrapper.find('#cvc').setValue(corrctCardInfo[0].cvc)
+    wrapper.find('#card-number').setValue(correctCardInfo[0].number)
+    wrapper.find('#month').setValue(correctCardInfo[0].mon)
+    wrapper.find('#year').setValue(correctCardInfo[0].year)
+    wrapper.find('#cvc').setValue(correctCardInfo[0].cvc)
 
 
     let button = wrapper.find('.submitButton')
@@ -259,7 +259,7 @@ describe('💡Click Checkout Button', () => {
       localVue
     })
 
-    corrctCardInfo.forEach(element => {
+    correctCardInfo.forEach(element => {
       wrapper.find('#card-number').setValue(element.number)
       wrapper.find('#cvc').setValue(element.cvc)
       let button = wrapper.find('.submitButton')
